@@ -78,7 +78,7 @@
         var type = getConstructorType(constructor), valueType;
         // Validate native instances
         if(type){
-            return function(value){
+            return function validateNative(value){
                 valueType = getType(value);
                 if(valueType !== type){
                     error(prop, type, valueType);
@@ -87,7 +87,7 @@
             }; 
         }
         // Validate user-defined constructor instances
-        return function(value){
+        return function validateUserDefined(value){
             if(!(value instanceof constructor)){
                 error(prop, getFunctionName(constructor), getType(value));
             }
