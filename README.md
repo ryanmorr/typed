@@ -1,4 +1,4 @@
-# typed
+# typed [![Build Status](https://travis-ci.org/ryanmorr/typed.svg)](https://travis-ci.org/ryanmorr/typed)
 
 Simple function to create object literals with statically typed properties that enforce a specific constructor type.
 
