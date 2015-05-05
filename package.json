@@ -2,13 +2,21 @@
   "name": "typed",
   "version": "1.0.0",
   "description": "Statically typed properties for object literals",
+  "license": "UNLICENSE",
+  "homepage": "https://github.com/ryanmorr/typed",
+  "main": "dist/typed.js",
   "author": {
     "name": "Ryan Morr",
     "email": "rm.morr@gmail.com",
     "url": "http://ryanmorr.com"
   },
-  "license": "UNLICENSE",
-  "homepage": "https://github.com/ryanmorr/typed",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ryanmorr/typed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryanmorr/typed/issues"
+  },
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-uglify": "^1.2.0",
