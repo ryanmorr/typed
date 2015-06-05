@@ -22,9 +22,11 @@ If a value of the wrong type is assigned to a property, a `TypeError` will be th
 
 ## Installation
 
-Typed is [CommonJS](http://www.commonjs.org/) and [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) compatible with no dependencies. You can download the [development](http://github.com/ryanmorr/typed/raw/master/dist/typed.js) or [minified](http://github.com/ryanmorr/typed/raw/master/dist/typed.min.js) version, or install it using Bower:
+Typed is [CommonJS](http://www.commonjs.org/) and [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) compatible with no dependencies. You can download the [development](http://github.com/ryanmorr/typed/raw/master/dist/typed.js) or [minified](http://github.com/ryanmorr/typed/raw/master/dist/typed.min.js) version, or install it in one of the following ways:
 
 ``` sh
+npm install git+https://git@github.com/ryanmorr/typed.git
+
 bower install ryanmorr/typed
 ```
 
