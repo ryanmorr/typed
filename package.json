@@ -2,7 +2,7 @@
   "name": "typed",
   "version": "1.0.0",
   "description": "Statically typed properties for object literals",
-  "license": "UNLICENSE",
+  "license": "Unlicense",
   "homepage": "https://github.com/ryanmorr/typed",
   "main": "dist/typed.js",
   "author": {
