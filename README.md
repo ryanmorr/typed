@@ -1,6 +1,10 @@
 # typed
 
-[![GitHub version](https://badge.fury.io/gh/ryanmorr%2Ftyped.svg)](https://badge.fury.io/gh/ryanmorr%2Ftyped) [![Build Status](https://travis-ci.org/ryanmorr/typed.svg)](https://travis-ci.org/ryanmorr/typed) ![Size](https://badge-size.herokuapp.com/ryanmorr/typed/master/dist/typed.min.js.svg?color=blue&label=file%20size)
+[![Version Badge][version-image]][project-url]
+[![Build Status][build-image]][build-url]
+[![Dependencies][dependencies-image]][project-url]
+[![License][license-image]][license-url]
+[![File Size][file-size-image]][project-url]
 
 > Statically typed properties for object literals
 
@@ -63,3 +67,12 @@ gulp test
 ## License
 
 This project is dedicated to the public domain as described by the [Unlicense](http://unlicense.org/).
+
+[project-url]: https://github.com/ryanmorr/typed
+[version-image]: https://badge.fury.io/gh/ryanmorr%2Ftyped.svg
+[build-url]: https://travis-ci.org/ryanmorr/typed
+[build-image]: https://travis-ci.org/ryanmorr/typed.svg
+[dependencies-image]: https://david-dm.org/ryanmorr/typed.svg
+[license-image]: https://img.shields.io/badge/license-Unlicense-blue.svg
+[license-url]: UNLICENSE
+[file-size-image]: https://badge-size.herokuapp.com/ryanmorr/typed/master/dist/typed.min.js.svg?color=blue&label=file%20size
