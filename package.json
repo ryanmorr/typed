@@ -1,42 +1,51 @@
 {
-  "name": "typed",
+  "name": "@ryanmorr/typed",
   "version": "2.0.0",
   "description": "Statically typed properties for object literals",
   "license": "Unlicense",
+  "author": "Ryan Morr",
   "homepage": "https://github.com/ryanmorr/typed",
-  "main": "dist/typed.min.js",
-  "author": {
-    "name": "Ryan Morr",
-    "email": "rm.morr@gmail.com",
-    "url": "http://ryanmorr.com"
-  },
+  "bugs": "https://github.com/ryanmorr/typed/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ryanmorr/typed.git"
+    "url": "git+https://github.com/ryanmorr/typed.git"
   },
-  "bugs": {
-    "url": "https://github.com/ryanmorr/typed/issues"
+  "keywords": [
+    "javascript",
+    "object",
+    "properties",
+    "statically typed",
+    "data"
+  ],
+  "type": "module",
+  "main": "dist/cjs/typed.js",
+  "module": "dist/esm/typed.js",
+  "browser": "dist/umd/typed.js",
+  "exports": {
+    ".": {
+      "browser": "./dist/umd/typed.js",
+      "import": "./dist/esm/typed.js",
+      "require": "./dist/cjs/typed.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint src/** test/specs/**",
+    "test": "mocha test/specs/**/*.js --reporter spec",
+    "build": "rollup -c"
   },
   "devDependencies": {
-    "babel-core": "^6.11.4",
-    "babel-eslint": "^6.1.2",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-es2015": "^6.9.0",
-    "babelify": "^7.3.0",
-    "browserify": "^13.1.0",
-    "chai": "^3.5.0",
-    "del": "^2.2.1",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-eslint": "^3.0.1",
-    "gulp-header": "^1.2.2",
-    "gulp-mocha": "^3.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.4",
-    "mocha": "^2.5.3",
-    "sinon": "^1.17.5",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.33.0",
+    "mocha": "^10.2.0",
+    "rollup": "^3.14.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "sinon": "^15.0.1",
+    "terser": "^5.16.3"
   }
 }

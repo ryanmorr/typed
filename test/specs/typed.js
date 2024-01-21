@@ -1,7 +1,7 @@
 /* eslint-disable max-len, no-unused-expressions */
 
 import { expect } from 'chai';
-import typed from '../src/typed';
+import typed from '../../src/typed.js';
 
 function errorMsg(prop, expected, actual) {
     return 'Invalid value assignment on "' + prop + '", expected: ' + expected + ', actual: ' + actual;
