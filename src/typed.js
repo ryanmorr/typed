@@ -18,14 +18,14 @@ function getValidator(prop, constructor) {
                 error(prop, constructorName, getType(value));
             }
             return true;
-        }
+        };
     }
     return (value) => {
         if (!(value instanceof constructor)) {
             error(prop, constructorName, getType(value));
         }
         return true;
-    }
+    };
 }
 
 function defineProperty(object, name, constructor) {

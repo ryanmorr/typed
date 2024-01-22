@@ -190,7 +190,7 @@ describe('typed', () => {
 
         const date = new Date();
 
-        obj.value = date
+        obj.value = date;
 
         const set = () => obj.value = 123;
 
