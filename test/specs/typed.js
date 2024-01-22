@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import typed from '../../src/typed.js';
 
 function errorMsg(prop, expected, actual) {
-    return 'Invalid value assignment on "' + prop + '", expected: ' + expected + ', actual: ' + actual;
+    return `Invalid value assignment on "${prop}", expected: ${expected}, actual: ${actual}`;
 }
 
 describe('typed', () => {
@@ -32,9 +32,9 @@ describe('typed', () => {
 
         obj.value = 'foo';
         
-        const set = () => obj.value = 123;
+        const set = () => obj.value = null;
 
-        expect(set).to.throw(TypeError, errorMsg('value', 'String', 'Number'));
+        expect(set).to.throw(TypeError, errorMsg('value', 'String', 'Null'));
         expect(obj.value).to.equal('foo');
     });
 
@@ -56,9 +56,9 @@ describe('typed', () => {
 
         obj.value = 1;
 
-        const set = () => obj.value = true;
+        const set = () => obj.value = undefined;
 
-        expect(set).to.throw(TypeError, errorMsg('value', 'Number', 'Boolean'));
+        expect(set).to.throw(TypeError, errorMsg('value', 'Number', 'Undefined'));
         expect(obj.value).to.equal(1);
     });
 
