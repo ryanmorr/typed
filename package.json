@@ -1,6 +1,6 @@
 {
   "name": "@ryanmorr/typed",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Statically typed properties for object literals",
   "license": "Unlicense",
   "author": "Ryan Morr",
