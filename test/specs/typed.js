@@ -1,5 +1,3 @@
-/* eslint-disable max-len, no-unused-expressions */
-
 import { expect } from 'chai';
 import typed from '../../src/typed.js';
 
@@ -8,206 +6,227 @@ function errorMsg(prop, expected, actual) {
 }
 
 describe('typed', () => {
-    it('should return undefined before a value is assigned', () => {
+    it('should set property to undefined as default value', () => {
         const obj = typed({
-            foo: String
+            value: String
         });
-        expect(obj.foo).to.equal(undefined);
+
+        expect(obj.value).to.equal(undefined);
     });
 
-    describe('strings', () => {
+    it('should allow a string value to be set on the property', () => {
         const obj = typed({
-            foo: String
+            value: String
         });
 
-        const string = 'foo';
+        const set = () => obj.value = 'foo';
 
-        it('should allow a string value to be set on the property', () => {
-            const set = () => {
-                obj.foo = string;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(string);
-        });
-
-        it('should not allow a non-string value to be set on the property', () => {
-            const set = () => {
-                obj.foo = 123;
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'String', 'Number'));
-            expect(obj.foo).to.equal(string);
-        });
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal('foo');
     });
 
-    describe('numbers', () => {
+    it('should not allow a non-string value to be set on the property', () => {
         const obj = typed({
-            foo: Number
+            value: String
         });
 
-        const number = 1;
+        obj.value = 'foo';
+        
+        const set = () => obj.value = 123;
 
-        it('should allow a number value to be set on the property', () => {
-            const set = () => {
-                obj.foo = number;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(number);
-        });
-
-        it('should not allow a non-number value to be set on the property', () => {
-            const set = () => {
-                obj.foo = true;
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'Number', 'Boolean'));
-            expect(obj.foo).to.equal(number);
-        });
+        expect(set).to.throw(TypeError, errorMsg('value', 'String', 'Number'));
+        expect(obj.value).to.equal('foo');
     });
 
-    describe('booleans', () => {
+    it('should allow a number value to be set on the property', () => {
         const obj = typed({
-            foo: Boolean
+            value: Number
         });
 
-        const bool = false;
+        const set = () => obj.value = 1;
 
-        it('should allow a boolean value to be set on the property', () => {
-            const set = () => {
-                obj.foo = bool;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(bool);
-        });
-
-        it('should not allow a non-boolean value to be set on the property', () => {
-            const set = () => {
-                obj.foo = [];
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'Boolean', 'Array'));
-            expect(obj.foo).to.equal(bool);
-        });
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal(1);
     });
 
-    describe('arrays', () => {
+    it('should not allow a non-number value to be set on the property', () => {
         const obj = typed({
-            foo: Array
+            value: Number
+        });
+
+        obj.value = 1;
+
+        const set = () => obj.value = true;
+
+        expect(set).to.throw(TypeError, errorMsg('value', 'Number', 'Boolean'));
+        expect(obj.value).to.equal(1);
+    });
+
+    it('should allow a boolean value to be set on the property', () => {
+        const obj = typed({
+            value: Boolean
+        });
+
+        const set = () => obj.value = true;
+
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal(true);
+    });
+
+    it('should not allow a non-boolean value to be set on the property', () => {
+        const obj = typed({
+            value: Boolean
+        });
+
+        obj.value = true;
+
+        const set = () => obj.value = [];
+
+        expect(set).to.throw(TypeError, errorMsg('value', 'Boolean', 'Array'));
+        expect(obj.value).to.equal(true);
+    });
+
+    it('should allow an array value to be set on the property', () => {
+        const obj = typed({
+            value: Array
         });
 
         const array = [1, 2, 3];
 
-        it('should allow an array value to be set on the property', () => {
-            const set = () => {
-                obj.foo = array;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(array);
-        });
+        const set = () => obj.value = array;
 
-        it('should not allow a non-array value to be set on the property', () => {
-            const set = () => {
-                obj.foo = {};
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'Array', 'Object'));
-            expect(obj.foo).to.equal(array);
-        });
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal(array);
     });
 
-    describe('objects', () => {
+    it('should not allow a non-array value to be set on the property', () => {
         const obj = typed({
-            foo: Object
+            value: Array
         });
 
-        const map = {name: 'John'};
+        const array = [1, 2, 3];
 
-        it('should allow a object literal value to be set on the property', () => {
-            const set = () => {
-                obj.foo = map;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(map);
-        });
+        obj.value = array;
 
-        it('should not allow a non-object literal value to be set on the property', () => {
-            const set = () => {
-                obj.foo = 'foo';
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'Object', 'String'));
-            expect(obj.foo).to.equal(map);
-        });
+        const set = () => obj.value = {};
+
+        expect(set).to.throw(TypeError, errorMsg('value', 'Array', 'Object'));
+        expect(obj.value).to.equal(array);
     });
 
-    describe('functions', () => {
+    it('should allow a object literal value to be set on the property', () => {
         const obj = typed({
-            foo: Function
+            value: Object
         });
 
-        const fn = () => {
-            return;
-        };
+        const map = {foo: 'bar'};
 
-        it('should allow a function value to be set on the property', () => {
-            const set = () => {
-                obj.foo = fn;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(fn);
-        });
+        const set = () => obj.value = map;
 
-        it('should not allow a non-function value to be set on the property', () => {
-            const set = () => {
-                obj.foo = false;
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'Function', 'Boolean'));
-            expect(obj.foo).to.equal(fn);
-        });
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal(map);
     });
 
-    describe('dates', () => {
+    it('should not allow a non-object literal value to be set on the property', () => {
         const obj = typed({
-            foo: Date
+            value: Object
+        });
+
+        const map = {foo: 'bar'};
+
+        obj.value = map;
+
+        const set = () => obj.value = 'value';
+
+        expect(set).to.throw(TypeError, errorMsg('value', 'Object', 'String'));
+        expect(obj.value).to.equal(map);
+    });
+
+    it('should allow a function value to be set on the property', () => {
+        const obj = typed({
+            value: Function
+        });
+
+        const fn = () => 1;
+
+        const set = () => obj.value = fn;
+
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal(fn);
+    });
+
+    it('should not allow a non-function value to be set on the property', () => {
+        const obj = typed({
+            value: Function
+        });
+
+        const fn = () => 1;
+
+        obj.value = fn;
+
+        const set = () => obj.value = false;
+
+        expect(set).to.throw(TypeError, errorMsg('value', 'Function', 'Boolean'));
+        expect(obj.value).to.equal(fn);
+    });
+
+    it('should allow a date value to be set on the property', () => {
+        const obj = typed({
+            value: Date
         });
 
         const date = new Date();
 
-        it('should allow a date value to be set on the property', () => {
-            const set = () => {
-                obj.foo = date;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(date);
-        });
+        const set = () => obj.value = date;
 
-        it('should not allow a non-date value to be set on the property', () => {
-            const set = () => {
-                obj.foo = 123;
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'Date', 'Number'));
-            expect(obj.foo).to.equal(date);
-        });
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal(date);
     });
 
-    describe('user-defined constructors', () => {
+    it('should not allow a non-date value to be set on the property', () => {
+        const obj = typed({
+            value: Date
+        });
+
+        const date = new Date();
+
+        obj.value = date
+
+        const set = () => obj.value = 123;
+
+        expect(set).to.throw(TypeError, errorMsg('value', 'Date', 'Number'));
+        expect(obj.value).to.equal(date);
+    });
+
+    it('should allow an instance value to be set on the property', () => {
         function CustomConstructor() {}
 
         const obj = typed({
-            foo: CustomConstructor
+            value: CustomConstructor
         });
 
         const instance = new CustomConstructor();
 
-        it('should allow an instance value to be set on the property', () => {
-            const set = () => {
-                obj.foo = instance;
-            };
-            expect(set).to.not.throw();
-            expect(obj.foo).to.equal(instance);
+        const set = () => obj.value = instance;
+
+        expect(set).to.not.throw();
+        expect(obj.value).to.equal(instance);
+    });
+
+    it('should not allow a non-instance value to be set on the property', () => {
+        function CustomConstructor() {}
+
+        const obj = typed({
+            value: CustomConstructor
         });
 
-        it('should not allow a non-instance value to be set on the property', () => {
-            const set = () => {
-                obj.foo = [];
-            };
-            expect(set).to.throw(TypeError, errorMsg('foo', 'CustomConstructor', 'Array'));
-            expect(obj.foo).to.equal(instance);
-        });
+        const instance = new CustomConstructor();
+
+        obj.value = instance;
+
+        const set = () => obj.value = [];
+
+        expect(set).to.throw(TypeError, errorMsg('value', 'CustomConstructor', 'Array'));
+        expect(obj.value).to.equal(instance);
     });
 });
