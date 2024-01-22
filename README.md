@@ -19,6 +19,8 @@ npm install @ryanmorr/typed
 Restrict properties to a native data type:
 
 ```javascript
+import typed from '@ryanmorr/typed';
+
 const object = typed({
     foo: String,
     bar: Number 
