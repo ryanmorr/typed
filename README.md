@@ -1,16 +1,22 @@
 # typed
 
 [![Version Badge][version-image]][project-url]
-[![Build Status][build-image]][build-url]
-[![Dependencies][dependencies-image]][project-url]
 [![License][license-image]][license-url]
-[![File Size][file-size-image]][project-url]
+[![Build Status][build-image]][build-url]
 
 > Statically typed properties for object literals
 
+## Install
+
+Download the [CJS](https://github.com/ryanmorr/typed/raw/master/dist/cjs/typed.js), [ESM](https://github.com/ryanmorr/typed/raw/master/dist/esm/typed.js), [UMD](https://github.com/ryanmorr/typed/raw/master/dist/umd/typed.js) versions or install via NPM:
+
+```sh
+npm install @ryanmorr/typed
+```
+
 ## Usage
 
-Map properties to a native data type:
+Restrict properties to a native data type:
 
 ```javascript
 const object = typed({
@@ -44,35 +50,13 @@ const object = typed({
 object.foo = 123 // throws: Invalid value assignment on "foo", expected: String, actual: Number
 ```
 
-## Installation
-
-Typed is [CommonJS](http://www.commonjs.org/) and [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) compatible with no dependencies. You can download the [development](http://github.com/ryanmorr/typed/raw/master/dist/typed.js) or [minified](http://github.com/ryanmorr/typed/raw/master/dist/typed.min.js) version, or install it in one of the following ways:
-
-``` sh
-npm install ryanmorr/typed
-
-bower install ryanmorr/typed
-```
-
-## Tests
-
-Run unit tests by issuing the following commands:
-
-``` sh
-npm install
-npm install -g gulp
-gulp test
-```
-
 ## License
 
 This project is dedicated to the public domain as described by the [Unlicense](http://unlicense.org/).
 
 [project-url]: https://github.com/ryanmorr/typed
-[version-image]: https://badge.fury.io/gh/ryanmorr%2Ftyped.svg
-[build-url]: https://travis-ci.org/ryanmorr/typed
-[build-image]: https://travis-ci.org/ryanmorr/typed.svg
-[dependencies-image]: https://david-dm.org/ryanmorr/typed.svg
-[license-image]: https://img.shields.io/badge/license-Unlicense-blue.svg
+[version-image]: https://img.shields.io/github/package-json/v/ryanmorr/typed?color=blue&style=flat-square
+[build-url]: https://github.com/ryanmorr/typed/actions
+[build-image]: https://img.shields.io/github/actions/workflow/status/ryanmorr/typed/node.js.yml?style=flat-square
+[license-image]: https://img.shields.io/github/license/ryanmorr/typed?color=blue&style=flat-square
 [license-url]: UNLICENSE
-[file-size-image]: https://badge-size.herokuapp.com/ryanmorr/typed/master/dist/typed.min.js.svg?color=blue&label=file%20size
